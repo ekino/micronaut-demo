@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: com.ekino.micronaut.borrowing
+---
+testFramework: junit
+sourceLanguage: java

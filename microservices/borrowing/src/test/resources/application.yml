@@ -1,0 +1,27 @@
+micronaut:
+  application:
+    name: borrowing
+
+datasources:
+  default:
+    url: jdbc:postgresql://${POSTGRESQL_HOST}:${POSTGRESQL_TCP_5432}/micronaut
+    username: micronaut
+    password: micronaut
+    driverClassName: org.postgresql.Driver
+
+jpa:
+  default:
+    packages-to-scan:
+      - 'com.ekino.micronaut.borrowing.domain'
+
+flyway:
+  locations: classpath:/db/migration
+
+eureka:
+  client:
+    registration:
+      enabled: false
+
+jackson:
+  serialization:
+    writeDatesAsTimestamps: false
