@@ -1,0 +1,6 @@
+sonarqube {
+  properties {
+    property "sonar.coverage.exclusions", ["**/Application.java"]
+    property "sonar.exclusions", ["**/generated-sources/**/*.java"]
+  }
+}

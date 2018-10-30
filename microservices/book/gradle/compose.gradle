@@ -1,0 +1,20 @@
+dockerCompose {
+  forceRecreate = true
+  removeOrphans = true
+  upAdditionalArgs = ['--renew-anon-volumes']
+}
+
+test {
+  dependsOn(composeUp)
+  doFirst {
+    dockerCompose.exposeAsEnvironment(test)
+  }
+  finalizedBy(composeDown)
+}
+
+run {
+  dependsOn(composeUp)
+  doFirst {
+    dockerCompose.exposeAsEnvironment(run)
+  }
+}

@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: com.ekino.micronaut.book
+---
+testFramework: spock
+sourceLanguage: java

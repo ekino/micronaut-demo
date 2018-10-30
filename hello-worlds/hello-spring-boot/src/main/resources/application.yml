@@ -1,0 +1,17 @@
+endpoint:
+  metrics:
+    enable: true
+    sensitive: false
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: metrics
+  endpoint:
+    metrics:
+      enabled: true
