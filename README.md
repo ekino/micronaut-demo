@@ -51,7 +51,7 @@ Three simple and comparable hello world applications in [Micronaut](hello-worlds
 
 * JDK 8
 * UNIX system (for the Graal native image only)
-* Optional: Graal SDK 1.0.0-RC7 (for building the native image yourself)
+* Optional: Graal SDK 1.0.0-RC8 (for building the native image yourself)
 
 ### Run
 

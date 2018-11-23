@@ -20,9 +20,10 @@ public class FlywayConfig implements ApplicationEventListener<ApplicationStartup
 
     @Override
     public void onApplicationEvent(ApplicationStartupEvent event) {
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(dataSource);
-        flyway.setLocations(locations);
+        Flyway flyway = Flyway.configure()
+                .dataSource(dataSource)
+                .locations(locations)
+                .load();
         flyway.clean();
         flyway.migrate();
     }
