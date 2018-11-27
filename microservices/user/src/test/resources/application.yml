@@ -17,7 +17,11 @@ jpa:
 flyway:
   locations: classpath:/db/migration
 
-eureka:
+consul:
   client:
     registration:
       enabled: false
+
+tracing:
+  jaeger:
+    enabled: false

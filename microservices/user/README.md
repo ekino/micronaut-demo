@@ -3,14 +3,14 @@
 ## Overview
 
 The service responsible of managing the users ("readers" in our case).
-It is required to start the Eureka Server before starting it.
+It is required to start the Consule and Jaeger servers before starting it.
 
 ## Requirements
 * JDK 8
 * Docker Compose 1.19 +
 
 ## Notable Frameworks and Libraries
-* Micronaut 1.0.0
+* Micronaut 1.0.1
 * Java 8
 * [JUnit5](https://junit.org/junit5/) with Micronaut's test suite and [AssertJ](http://joel-costigliola.github.io/assertj/)
 

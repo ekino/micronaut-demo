@@ -17,7 +17,7 @@ jpa:
 flyway:
   locations: classpath:/db/migration
 
-eureka:
+consul:
   client:
     registration:
       enabled: false
@@ -25,3 +25,7 @@ eureka:
 jackson:
   serialization:
     writeDatesAsTimestamps: false
+
+tracing:
+  jaeger:
+    enabled: false

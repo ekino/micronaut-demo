@@ -19,11 +19,11 @@ A simple read-only Micronaut application with three microservices : [book](micro
 
 ### Run
 
-Run the discovery server first from project root:
+Run the discovery and tracing servers first from project root:
 
-`cd microservices/eureka-server && ./gradlew clean bootRun`
+`cd microservices && docker-compose up -d`
 
-Then run each of the services in three other terminals from project root:
+Then run each of the services in three terminals from project root:
 
 `cd microservices/book && ./gradlew clean run`
 
@@ -31,7 +31,8 @@ Then run each of the services in three other terminals from project root:
 
 `cd microservices/user && ./gradlew clean run`
 
-All services will be automatically registered to Eureka and listed on [its dashboard](http://localhost:8761).
+All services will be automatically registered to Consul and listed on [its dashboard](http://localhost:8500).
+You'll be able to trace all your request on [Jaeger dashboard](http://localhost:16686).
 
 The exposed resources are:
 

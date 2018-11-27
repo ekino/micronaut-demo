@@ -45,10 +45,12 @@ dependencies {
   implementation "io.micronaut.configuration:micronaut-micrometer-core"
   implementation "io.micronaut.configuration:micronaut-hibernate-jpa"
   implementation "io.micronaut.configuration:micronaut-jdbc-hikari"
+  implementation "io.micronaut:micronaut-tracing"
 
   implementation "io.projectreactor:reactor-core"
   implementation "org.flywaydb:flyway-core:${flywayVersion}"
   implementation "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
+  implementation "io.jaegertracing:jaeger-thrift:0.31.0"
 
   compileOnly "io.micronaut:micronaut-inject-java"
 

@@ -11,6 +11,8 @@ import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.annotation.Status;
+import io.micronaut.tracing.annotation.ContinueSpan;
+import io.micronaut.tracing.annotation.SpanTag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -32,7 +34,8 @@ public class BorrowingController {
     @Get("/{id}")
     @Produces(APPLICATION_JSON)
     @Status(OK)
-    public Mono<BorrowingOutputDto> findById(UUID id) {
+    @ContinueSpan
+    public Mono<BorrowingOutputDto> findById(@SpanTag("borrowing.id") UUID id) {
         return borrowingService.findById(id);
     }
 

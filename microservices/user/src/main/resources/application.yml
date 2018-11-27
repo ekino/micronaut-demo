@@ -19,8 +19,17 @@ jpa:
 flyway:
   locations: classpath:/db/migration, classpath:/db/data
 
-eureka:
+consul:
   client:
     registration:
       enabled: true
-    defaultZone: "${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}"
+    defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"
+
+tracing:
+  jaeger:
+    enabled: true
+    sender:
+      agentHost: localhost
+      agentPort: 5775
+    sampler:
+      probability: 1

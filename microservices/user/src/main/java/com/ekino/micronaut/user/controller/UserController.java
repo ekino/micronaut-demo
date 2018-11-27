@@ -10,6 +10,8 @@ import javax.inject.Inject;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
+import io.micronaut.tracing.annotation.ContinueSpan;
+import io.micronaut.tracing.annotation.SpanTag;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -29,7 +31,8 @@ public class UserController {
 
     @Get("/{id}")
     @Produces(APPLICATION_JSON)
-    public Mono<UserDto> findById(UUID id) {
+    @ContinueSpan
+    public Mono<UserDto> findById(@SpanTag("user.id") UUID id) {
         return userService.findById(id);
     }
 
