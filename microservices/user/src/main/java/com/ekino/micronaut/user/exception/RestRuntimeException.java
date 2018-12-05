@@ -11,12 +11,12 @@ import static lombok.AccessLevel.PRIVATE;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = PRIVATE)
-abstract class RestRuntimeException extends RuntimeException {
+public abstract class RestRuntimeException extends RuntimeException {
 
     final HttpStatus httpStatus;
     final String errorCode;
 
-    RestRuntimeException(HttpStatus returnCode, String message, String errorCode, Object... args) {
+    public RestRuntimeException(HttpStatus returnCode, String message, String errorCode, Object... args) {
         super(format(message, (Object[]) args));
         this.httpStatus = returnCode;
         this.errorCode = errorCode;
