@@ -22,8 +22,6 @@ import static io.micronaut.http.MediaType.APPLICATION_JSON;
 @Controller("/users")
 public class UserController {
 
-    private static Integer dirtyCounter = 0;
-
     @Inject
     private UserService userService;
 
@@ -36,13 +34,12 @@ public class UserController {
     @Get("/{id}")
     @Produces(APPLICATION_JSON)
     @ContinueSpan
-    public Mono<UserDto> findById(@SpanTag("user.id") UUID id) {
-        if (dirtyCounter != 2) {
-            dirtyCounter++;
+    public Mono<UserDto> findById(@SpanTag("user.id") UUID id) throws InterruptedException {
+        Thread.sleep(1000);
+        if (true) {
             throw new RestRuntimeException(INTERNAL_SERVER_ERROR, "NOPE", "got.noped") {
             };
         }
-        dirtyCounter = 0;
 
         return userService.findById(id);
     }
