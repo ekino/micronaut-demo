@@ -10,7 +10,7 @@ It is required to start the Consule and Jaeger servers before starting it.
 * Docker Compose 1.19 +
 
 ## Notable Frameworks and Libraries
-* Micronaut 1.0.1
+* Micronaut 1.0.3
 * Java 8
 * [Spok](http://spockframework.org/) with Micronaut's test suite
 
