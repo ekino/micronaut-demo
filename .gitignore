@@ -10,5 +10,11 @@ out/
 *.iml
 *.ipr
 
+### VSCode ###
+bin
+.settings
+.classpath
+.project
+
 # Mac
 .DS_Store
