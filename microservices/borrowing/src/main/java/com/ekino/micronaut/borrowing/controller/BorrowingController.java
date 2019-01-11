@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Produces;
 import io.micronaut.http.annotation.Status;
 import io.micronaut.tracing.annotation.ContinueSpan;
 import io.micronaut.tracing.annotation.SpanTag;
@@ -17,7 +16,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import static io.micronaut.http.HttpStatus.OK;
-import static io.micronaut.http.MediaType.APPLICATION_JSON;
 
 @Controller("/borrowings")
 public class BorrowingController {
@@ -26,13 +24,11 @@ public class BorrowingController {
     private BorrowingService borrowingService;
 
     @Get
-    @Produces(APPLICATION_JSON)
     public Flux<BorrowingOutputDto> findAll() {
         return borrowingService.findAll();
     }
 
     @Get("/{id}")
-    @Produces(APPLICATION_JSON)
     @Status(OK)
     @ContinueSpan
     public Mono<BorrowingOutputDto> findById(@SpanTag("borrowing.id") UUID id) {

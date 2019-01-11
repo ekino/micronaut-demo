@@ -62,9 +62,7 @@ abstract class AbstractIT {
 
         EntityTransaction transaction = getActiveTransaction();
 
-        entityManager.createNativeQuery("SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = 'public'")
-                .getResultStream()
-                .forEach(tableName -> entityManager.createNativeQuery("DELETE FROM \"" + tableName + "\"").executeUpdate());
+        entityManager.createNativeQuery("DELETE FROM \"user\"").executeUpdate();
 
         transaction.commit();
     }

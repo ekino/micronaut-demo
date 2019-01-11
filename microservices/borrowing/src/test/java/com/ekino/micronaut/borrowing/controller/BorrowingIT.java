@@ -4,8 +4,12 @@ import com.ekino.micronaut.borrowing.dto.BorrowingOutputDto;
 
 import java.util.Set;
 
+import javax.inject.Inject;
+
 import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.client.HttpClient;
+import io.micronaut.http.client.annotation.Client;
 import io.micronaut.test.annotation.MicronautTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +22,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @MicronautTest(packages = "com.ekino.micronaut.borrowing")
 class BorrowingIT extends AbstractIT {
+
+    @Inject
+    @Client("/")
+    HttpClient client;
 
     @DisplayName("Find all should return all borrowings")
     @Test
@@ -32,7 +40,10 @@ class BorrowingIT extends AbstractIT {
         assertThat(response.code()).isEqualTo(200);
         Set<BorrowingOutputDto> borrowings = (Set<BorrowingOutputDto>) response.body();
         assertThat(borrowings).extracting(BorrowingOutputDto::getId)
-                .contains(fromString("09ccfe95-0d65-45e7-909f-49e73ba62e19"), fromString("0351a5dd-88d8-4c37-99d4-48c5d28e42b5"));
+                .contains(
+                        fromString("09ccfe95-0d65-45e7-909f-49e73ba62e19"),
+                        fromString("0351a5dd-88d8-4c37-99d4-48c5d28e42b5")
+                );
     }
 
     @DisplayName("Find by id should return 404")

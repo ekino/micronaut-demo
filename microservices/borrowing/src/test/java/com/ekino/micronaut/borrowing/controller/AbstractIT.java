@@ -10,8 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import io.micronaut.http.client.HttpClient;
-import io.micronaut.http.client.annotation.Client;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -19,10 +17,6 @@ import static java.nio.file.Files.readAllBytes;
 import static java.util.Arrays.stream;
 
 abstract class AbstractIT {
-
-    @Inject
-    @Client("/")
-    HttpClient client;
 
     @Inject
     private EntityManagerFactory entityManagerFactory;
@@ -62,9 +56,7 @@ abstract class AbstractIT {
 
         EntityTransaction transaction = getActiveTransaction();
 
-        entityManager.createNativeQuery("SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = 'public'")
-                .getResultStream()
-                .forEach(tableName -> entityManager.createNativeQuery("DELETE FROM \"" + tableName + "\"").executeUpdate());
+        entityManager.createNativeQuery("DELETE FROM borrowing").executeUpdate();
 
         transaction.commit();
     }
