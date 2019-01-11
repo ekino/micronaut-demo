@@ -34,9 +34,7 @@ abstract class AbstractIT extends Specification {
 
     EntityTransaction transaction = getActiveTransaction()
 
-    entityManager.createNativeQuery("SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = 'public'")
-            .resultList
-            .forEach { table -> entityManager.createNativeQuery("DELETE FROM " + table).executeUpdate() }
+    entityManager.createNativeQuery("DELETE FROM book").executeUpdate()
 
     transaction.commit()
   }
