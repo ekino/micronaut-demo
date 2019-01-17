@@ -6,7 +6,9 @@ Demonstration of Micronaut's features through a simple microservices application
 
 All subprojects have a dedicated README.
 
-This repository was used as a demonstration for [an article on Ekino's blog (in french)](https://www.ekino.com/micronaut-le-microframework-pour-microservices/).
+This repository was used as a demonstration for :
+* [An article on Ekino's blog (in french)](https://www.ekino.com/micronaut-le-microframework-pour-microservices/).
+* A talk at Bordeaux JUG ([slides are available here](https://sites.google.com/view/jug-micronaut))
 
 ## Microservices
 
