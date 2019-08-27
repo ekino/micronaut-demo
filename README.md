@@ -54,7 +54,7 @@ Three simple and comparable hello world applications in [Micronaut](hello-worlds
 
 * JDK 8
 * UNIX system (for the Graal native image only)
-* Optional: Graal SDK 1.0.0-RC8 (for building the native image yourself)
+* Optional: Graal SDK 19.x (for building the native image yourself)
 
 ### Run
 
@@ -79,4 +79,4 @@ The exposed resources are:
 
 * http://localhost:8080/hello and http://localhost:8080/metrics
 * http://localhost:8081/hello and http://localhost:8081/actuator/metrics
-* http://localhost:8082/hello
+* http://localhost:8082/hello and http://localhost:8082/metrics

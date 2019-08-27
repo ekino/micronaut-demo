@@ -22,12 +22,12 @@ public class BookService {
 
     @Transactional(readOnly = true)
     public Flux<Book> findAll() {
-        return bookRepository.findAll();
+        return Flux.from(bookRepository.findAll());
     }
 
     @Transactional(readOnly = true)
     public Mono<Book> findById(UUID id) {
-        return bookRepository.findById(id)
+        return Mono.from(bookRepository.findById(id))
                 .switchIfEmpty(defer(() -> error(new NotFoundException(BOOK_NOT_FOUND, id))));
     }
 

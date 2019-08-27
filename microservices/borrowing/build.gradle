@@ -33,6 +33,7 @@ dependencies {
   annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
   annotationProcessor "io.micronaut:micronaut-inject-java"
   annotationProcessor "io.micronaut:micronaut-validation"
+  annotationProcessor "io.micronaut.data:micronaut-data-processor:${micronautDataVersion}"
 
   implementation "io.micronaut:micronaut-inject"
   implementation "io.micronaut:micronaut-validation"
@@ -44,11 +45,12 @@ dependencies {
   implementation "io.micronaut.configuration:micronaut-hibernate-jpa"
   implementation "io.micronaut.configuration:micronaut-jdbc-hikari"
   implementation "io.micronaut:micronaut-tracing"
+  implementation "io.micronaut.data:micronaut-data-hibernate-jpa:${micronautDataVersion}"
 
   implementation "io.projectreactor:reactor-core"
-  implementation "org.flywaydb:flyway-core:${flywayVersion}"
+  implementation "org.flywaydb:flyway-core"
   implementation "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
-  implementation "io.jaegertracing:jaeger-thrift:0.31.0"
+  implementation "io.jaegertracing:jaeger-thrift"
 
   compileOnly "io.micronaut:micronaut-inject-java"
 
@@ -60,14 +62,14 @@ dependencies {
   runtimeOnly "ch.qos.logback:logback-classic:${logbackVersion}"
   runtimeOnly "com.h2database:h2" 
 
-  testImplementation "io.micronaut:micronaut-inject-java"
-  testImplementation "io.micronaut.test:micronaut-test-junit5:${micronautTestVersion}"
+  testAnnotationProcessor "io.micronaut:micronaut-inject-java"
+  testImplementation "io.micronaut.test:micronaut-test-junit5"
 
   testImplementation "org.assertj:assertj-core:${assertjVersion}"
-  testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-  testImplementation "org.junit.jupiter:junit-jupiter-params:${junitVersion}"
+  testImplementation "org.junit.jupiter:junit-jupiter-api"
+  testImplementation "org.junit.jupiter:junit-jupiter-params"
 
-  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 }
 
 test.useJUnitPlatform()

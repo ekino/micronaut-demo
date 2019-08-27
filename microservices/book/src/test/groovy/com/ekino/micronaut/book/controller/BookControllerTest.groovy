@@ -27,7 +27,7 @@ class BookControllerTest extends Specification {
   BookService bookService
 
   @MockBean(BookService)
-  BookService setup() {
+  BookService bookService() {
     Mock(BookService)
   }
 

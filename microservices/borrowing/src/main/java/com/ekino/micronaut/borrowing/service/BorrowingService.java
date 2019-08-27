@@ -1,5 +1,10 @@
 package com.ekino.micronaut.borrowing.service;
 
+import java.util.UUID;
+import java.util.function.Function;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import com.ekino.micronaut.borrowing.client.BookClient;
 import com.ekino.micronaut.borrowing.client.UserClient;
 import com.ekino.micronaut.borrowing.domain.Borrowing;
@@ -9,13 +14,6 @@ import com.ekino.micronaut.borrowing.dto.UserDto;
 import com.ekino.micronaut.borrowing.exception.NotFoundException;
 import com.ekino.micronaut.borrowing.mapper.BorrowingMapper;
 import com.ekino.micronaut.borrowing.repository.BorrowingRepository;
-
-import java.util.UUID;
-import java.util.function.Function;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
 import io.micronaut.spring.tx.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
@@ -41,7 +39,7 @@ public class BorrowingService {
     @Inject
     private UserClient userClient;
 
-    private Function<Borrowing, Mono<BorrowingOutputDto>> fetchLinkedResources = borrowing -> zip(
+    private final Function<Borrowing, Mono<BorrowingOutputDto>> fetchLinkedResources = borrowing -> zip(
             fetchUserById(borrowing.getUserId()),
             fetchBookById(borrowing.getBookId()))
             .map(tuple -> {
@@ -53,24 +51,24 @@ public class BorrowingService {
 
     @Transactional(readOnly = true)
     public Flux<BorrowingOutputDto> findAll() {
-        return borrowingRepository.findAll()
+        return Flux.from(borrowingRepository.findAll())
                 .flatMap(fetchLinkedResources);
     }
 
     @Transactional(readOnly = true)
     public Mono<BorrowingOutputDto> findById(UUID id) {
-        return borrowingRepository.findById(id)
+        return Mono.from(borrowingRepository.findById(id))
                 .switchIfEmpty(defer(() -> error(new NotFoundException(BORROWING_NOT_FOUND, id))))
                 .flatMap(fetchLinkedResources);
     }
 
     private Mono<BookDto> fetchBookById(UUID id) {
-        return bookClient.findById(id)
+        return Mono.from(bookClient.findById(id))
                 .doOnError(exception -> log.error(exception.getLocalizedMessage()));
     }
 
     private Mono<UserDto> fetchUserById(UUID id) {
-        return userClient.findById(id)
+        return Mono.from(userClient.findById(id))
                 .doOnError(exception -> log.error(exception.getLocalizedMessage()));
     }
 

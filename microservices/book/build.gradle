@@ -30,9 +30,11 @@ dependencyManagement {
 }
 
 dependencies {
+  annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
   annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
   annotationProcessor "io.micronaut:micronaut-inject-java"
   annotationProcessor "io.micronaut:micronaut-validation"
+  annotationProcessor "io.micronaut.data:micronaut-data-processor:${micronautDataVersion}"
 
   implementation "io.micronaut:micronaut-inject"
   implementation "io.micronaut:micronaut-validation"
@@ -44,14 +46,17 @@ dependencies {
   implementation "io.micronaut.configuration:micronaut-hibernate-jpa"
   implementation "io.micronaut.configuration:micronaut-jdbc-hikari"
   implementation "io.micronaut:micronaut-tracing"
+  implementation "io.micronaut.data:micronaut-data-hibernate-jpa:${micronautDataVersion}"
 
   implementation "io.projectreactor:reactor-core"
-  implementation "org.flywaydb:flyway-core:${flywayVersion}"
-  implementation "io.jaegertracing:jaeger-thrift:0.31.0"
+  implementation "org.flywaydb:flyway-core"
+  implementation "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
+  implementation "io.jaegertracing:jaeger-thrift"
 
   compileOnly "io.micronaut:micronaut-inject-java"
 
   compileOnly "org.projectlombok:lombok:${lombokVersion}"
+  compileOnly "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
   runtimeOnly "io.micronaut:micronaut-discovery-client"
 
@@ -59,9 +64,9 @@ dependencies {
   runtimeOnly "ch.qos.logback:logback-classic:${logbackVersion}"
 
   testImplementation "io.micronaut:micronaut-inject-groovy"
-  testImplementation "io.micronaut.test:micronaut-test-spock:${micronautTestVersion}"
+  testImplementation "io.micronaut.test:micronaut-test-spock"
 
-  testImplementation("org.spockframework:spock-core:${spockCoreVersion}")
+  testImplementation("org.spockframework:spock-core")
   testImplementation("com.athaydes:spock-reports:${spockReportsVersion}") {
     exclude group: "org.codehaus.groovy", module: "groovy-all"
   }

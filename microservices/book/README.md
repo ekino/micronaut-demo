@@ -10,7 +10,7 @@ It is required to start the Consule and Jaeger servers before starting it.
 * Docker Compose 1.19 +
 
 ## Notable Frameworks and Libraries
-* Micronaut 1.0.3
+* Micronaut 1.2.0
 * Java 8
 * [Spok](http://spockframework.org/) with Micronaut's test suite
 
@@ -24,4 +24,4 @@ It is required to start the Consule and Jaeger servers before starting it.
 ### Run
 `./gradlew run`
 
-The exposed resources are http://localhost;8081/book` and http://localhost;8081/books/{bookId}.
+The exposed resources are http://localhost:8081/book` and http://localhost:8081/books/{bookId}.

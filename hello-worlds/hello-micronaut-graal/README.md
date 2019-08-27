@@ -8,29 +8,31 @@ Only works on UNIX systems.
 
 ## Build (optional)
 
-**Requires Graal SDK 1.0.0 RC8**
+**Requires Graal SDK 19.x**
 
-Build the Jar:
+You can install it with SDKman:
+
+`sdk install java 19.0.0-grl`
+
+`sdk use java 19.0.0-grl`
+
+Since the version 19.0, the native-image was extracted from the base distribution.
+
+You have to install it with:
+
+`gu install native-image` 
+
+Then build the Jar:
 
 `./gradlew clean assemble`
 
-Generate the reflection configuration file then build the native image:
+And then build the native image:
 
 ```
-java -cp build/libs/hello-micronaut-graal-0.1-all.jar io.micronaut.graal.reflect.GraalClassLoadingAnalyzer
-
 native-image --no-server \
-             --class-path build/libs/hello-micronaut-graal-0.1-all.jar \
-             -H:ReflectionConfigurationFiles=build/reflect.json \
-             -H:EnableURLProtocols=http \
-             -H:IncludeResources="logback.xml|application.yml|META-INF/services/*.*" \
-             -H:Name=hello-micronaut-graal \
-             -H:Class=example.Application \
-             -H:+ReportUnsupportedElementsAtRuntime \
-             -H:+AllowVMInspection \
-             -H:-UseServiceLoaderFeature \
-             --rerun-class-initialization-at-runtime='sun.security.jca.JCAUtil$CachedSecureRandomHolder,javax.net.ssl.SSLContext' \
-             --delay-class-initialization-to-runtime=io.netty.handler.codec.http.HttpObjectEncoder,io.netty.handler.codec.http.websocketx.WebSocket00FrameEncoder,io.netty.handler.ssl.util.ThreadLocalInsecureRandom,com.sun.jndi.dns.DnsClient
+             -H:IncludeResources="logback.xml|application.yml" \
+             -jar build/libs/hello-micronaut-graal-0.1-all.jar \
+             hello-micronaut-graal
 ```
 
 ## Run
@@ -41,4 +43,4 @@ Linux 64 bits: `./hello-micronaut-graal-linux`
 
 Mac 64 bits: `./hello-micronaut-graal-mac`
 
-The exposed resources is `localhost:8082/hello`
+The exposed resources is `localhost:8082/hello` and `localhost:8082/metrics`
