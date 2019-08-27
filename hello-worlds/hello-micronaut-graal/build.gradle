@@ -19,7 +19,7 @@ repositories {
 
 dependencyManagement {
   imports {
-    mavenBom 'io.micronaut:micronaut-bom:1.0.3'
+    mavenBom 'io.micronaut:micronaut-bom:1.2.0'
   }
 }
 
@@ -30,13 +30,11 @@ dependencies {
   implementation "io.micronaut:micronaut-inject"
   implementation "io.micronaut:micronaut-runtime"
 
-  compileOnly "com.oracle.substratevm:svm"
+  implementation "io.micronaut.configuration:micronaut-micrometer-core"
+  implementation "io.micronaut:micronaut-management"
+
   compileOnly "io.micronaut:micronaut-inject-java"
-
   runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
-  runtimeOnly "io.micronaut:micronaut-graal"
-
-  testImplementation "io.micronaut:micronaut-inject-java"
 }
 
 shadowJar {

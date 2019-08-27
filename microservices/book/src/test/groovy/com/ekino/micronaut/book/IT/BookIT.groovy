@@ -1,6 +1,7 @@
 package com.ekino.micronaut.book.IT
 
-import com.ekino.micronaut.book.domain.Book
+
+import com.ekino.micronaut.book.dto.BookDTO
 import io.micronaut.core.type.Argument
 import io.micronaut.http.HttpRequest
 import io.micronaut.test.annotation.MicronautTest
@@ -17,7 +18,7 @@ class BookIT extends AbstractIT {
 
     when: "we do a get request on /books/id with an existing id"
     HttpRequest request = HttpRequest.GET("/books/" + BOOK_ID1)
-    Book book = client.toBlocking().retrieve(request, Book.class)
+    BookDTO book = client.toBlocking().retrieve(request, BookDTO.class)
 
     then: "the book correponding to the id is returned"
     book.id == BOOK_ID1
@@ -35,7 +36,7 @@ class BookIT extends AbstractIT {
 
     when: "we do a get request on /books"
     HttpRequest request = HttpRequest.GET("/books")
-    Set<Book> books = client.toBlocking().retrieve(request, Argument.of(Set, Book))
+    Set<BookDTO> books = client.toBlocking().retrieve(request, Argument.of(Set, BookDTO))
 
     then: "all the books are returned"
     books.size() == 2

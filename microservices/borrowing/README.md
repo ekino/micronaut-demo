@@ -10,7 +10,7 @@ It is required to start the Consul and Jaeger servers before starting it.
 * Docker Compose 1.19 +
 
 ## Notable Frameworks and Libraries
-* Micronaut 1.0.3
+* Micronaut 1.2.0
 * Java 8
 * Micronaut's reactive clients + fallback system
 * [JUnit5](https://junit.org/junit5/) with Micronaut's test suite and [AssertJ](http://joel-costigliola.github.io/assertj/)
@@ -25,7 +25,7 @@ It is required to start the Consul and Jaeger servers before starting it.
 ### Run
 `./gradlew run`
 
-The exposed resources are http://localhost;8080/borrowings and http://localhost;8080/borrowings/{borrowingId}.
+The exposed resources are http://localhost:8080/borrowings and http://localhost:8080/borrowings/{borrowingId}.
 
 ## Testing the fallback is working
 
