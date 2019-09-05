@@ -15,7 +15,9 @@ jpa:
       - 'com.ekino.micronaut.user.domain'
 
 flyway:
-  locations: classpath:/db/migration
+  datasources:
+    default:
+      locations: classpath:/db/migration
 
 consul:
   client:

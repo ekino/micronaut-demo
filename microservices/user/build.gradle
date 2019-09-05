@@ -14,7 +14,7 @@ apply from: "gradle/jacoco.gradle"
 
 version "0.1"
 group "com.ekino.micronaut.user"
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
   mavenLocal()
@@ -44,11 +44,11 @@ dependencies {
   implementation "io.micronaut.configuration:micronaut-micrometer-core"
   implementation "io.micronaut.configuration:micronaut-hibernate-jpa"
   implementation "io.micronaut.configuration:micronaut-jdbc-hikari"
+  implementation "io.micronaut.configuration:micronaut-flyway"
   implementation "io.micronaut:micronaut-tracing"
   implementation "io.micronaut.data:micronaut-data-hibernate-jpa:${micronautDataVersion}"
 
   implementation "io.projectreactor:reactor-core"
-  implementation "org.flywaydb:flyway-core"
   implementation "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
   implementation "io.jaegertracing:jaeger-thrift"
 

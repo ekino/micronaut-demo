@@ -17,7 +17,9 @@ jpa:
       - 'com.ekino.micronaut.borrowing.domain'
 
 flyway:
-  locations: classpath:/db/migration, classpath:/db/data
+  datasources:
+    default:
+      locations: classpath:/db/migration, classpath:/db/data
 
 consul:
   client:
@@ -33,6 +35,9 @@ endpoints:
   health.details-visible: ANONYMOUS
   beans.sensitive: false
   routes.sensitive: false
+  flyway:
+    enabled: true
+    sensitive: false
 
 tracing:
   jaeger:
