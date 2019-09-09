@@ -10,7 +10,7 @@ apply plugin: "java"
 
 version "0.1"
 group "example"
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
   mavenLocal()

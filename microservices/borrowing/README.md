@@ -6,12 +6,12 @@ The service responsible of managing the borrowings of books by users.
 It is required to start the Consul and Jaeger servers before starting it.
 
 ## Requirements
-* JDK 8
+* JDK 11
 * Docker Compose 1.19 +
 
 ## Notable Frameworks and Libraries
 * Micronaut 1.2.0
-* Java 8
+* Java 11
 * Micronaut's reactive clients + fallback system
 * [JUnit5](https://junit.org/junit5/) with Micronaut's test suite and [AssertJ](http://joel-costigliola.github.io/assertj/)
 

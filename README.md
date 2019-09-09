@@ -14,7 +14,7 @@ This repository was used as a demonstration for :
 
 ### Requirements
 
-* JDK 8
+* JDK 11
 * Docker Compose 1.19 +
 
 A simple read-only Micronaut application with three microservices : [book](microservices/book), [user](microservices/user) and [borrowing](microservices/borrowing).
@@ -52,7 +52,7 @@ Three simple and comparable hello world applications in [Micronaut](hello-worlds
 
 ### Requirements
 
-* JDK 8
+* JDK 11
 * UNIX system (for the Graal native image only)
 * Optional: Graal SDK 19.x (for building the native image yourself)
 
