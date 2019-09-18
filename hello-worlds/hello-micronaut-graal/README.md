@@ -31,7 +31,7 @@ And then build the native image:
 ```
 native-image --no-server \
              -H:IncludeResources="logback.xml|application.yml" \
-             -jar build/libs/hello-micronaut-graal-0.1-all.jar \
+             -jar build/libs/hello-micronaut-graal-0.1.jar \
              hello-micronaut-graal
 ```
 
